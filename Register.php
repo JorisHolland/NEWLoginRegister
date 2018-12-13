@@ -1,13 +1,16 @@
 <?php
-    $con = mysqli_connect("mysql10.000webhost.com", "a3288368_user", "abcd1234", "a3288368_data");
+    $con = mysqli_connect("localhost", "id8160341_registerdb", "Jo200403", "id8160341_registerdb");
     
-    $name = $_POST["name"];
-    $age = $_POST["age"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $vorname = $_POST["vorname"];
+    $nachname = $_POST["nachname"];
+    $alter = $_POST["alter"];
+    $email = $_POST["email"];
+    $passwort = $_POST["passwort"];
+    $telefon = $_POST["telefon"];
+    
 
-    $statement = mysqli_prepare($con, "INSERT INTO user (name, username, age, password) VALUES (?, ?, ?, ?)");
-    mysqli_stmt_bind_param($statement, "siss", $name, $username, $age, $password);
+    $statement = mysqli_prepare($con, "INSERT INTO user (vorname, nachname, email, alter, passwort, telefon) VALUES (?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($statement, "siss", $vorname, $nachname, $email, $alter, $passwort, $telefon);
     mysqli_stmt_execute($statement);
     
     $response = array();
